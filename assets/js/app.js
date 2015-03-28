@@ -9,7 +9,7 @@ angular.module('app', [])
     };
     $scope.buy = function(item){
         var i = $scope.items[item];
-        if(i.available) {
+        if($scope.coins >= i.price) {
             $scope.coins -= i.price;
             i.have += 1;
         }
