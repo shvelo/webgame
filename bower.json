@@ -1,0 +1,20 @@
+{
+  "name": "webgame",
+  "version": "1.0.0",
+  "authors": [
+    "Nick Shvelidze <captain@pirrate.me>"
+  ],
+  "description": "Game for /r/webgames jam",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15"
+  }
+}

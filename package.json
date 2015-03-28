@@ -1,0 +1,16 @@
+{
+  "name": "webgame",
+  "version": "1.0.0",
+  "description": "Game for /r/webgames jam",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Shvelidze <captain@pirrate.me>",
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.3.12",
+    "gulp": "^3.8.11",
+    "gulp-sass": "^1.3.3"
+  }
+}
