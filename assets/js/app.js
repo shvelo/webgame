@@ -4,7 +4,18 @@ angular.module('app', [])
         bagel: {
             name: "bagel",
             price: 10,
-            have: 0
+            have: 0,
+            onBuy: function(){
+                $scope.coinRate += 1;
+            }
+        },
+        superBagel: {
+            name: "super bagel",
+            price: 100,
+            have: 0,
+            onBuy: function(){
+                $scope.coinRate += 10;
+            }
         }
     };
     $scope.buy = function(item){
@@ -12,6 +23,7 @@ angular.module('app', [])
         if($scope.coins >= i.price) {
             $scope.coins -= i.price;
             i.have += 1;
+            if(i.onBuy) i.onBuy();
         }
     }
     $scope.drop = function(){
@@ -30,5 +42,5 @@ angular.module('app', [])
 
     $interval(function(){
         step();
-    }, 500);
+    }, 1000);
 });

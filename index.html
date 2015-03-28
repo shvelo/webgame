@@ -10,8 +10,9 @@
 <div class="panel items">
     You have <strong>{{coins}}</strong> coins 
     <span ng-repeat="item in items" ng-show="item.have > 0">
-        and <strong>{{item.have}}</strong> {{item.name}}s
+        , <strong>{{item.have}}</strong> {{item.name}}s
     </span>
+    <div>You get <strong>{{coinRate}}</strong> coins per second</div>
 </div>
 
 <div class="panel">
