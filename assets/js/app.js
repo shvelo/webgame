@@ -2,7 +2,7 @@ angular.module('app', [])
 .controller('appCtrl', function($scope, $interval){
     $scope.items = {
         bagel: {
-            name: "bagel",
+            name: "lambeosaurus",
             price: 10,
             have: 0,
             onBuy: function(){
@@ -10,7 +10,7 @@ angular.module('app', [])
             }
         },
         superBagel: {
-            name: "super bagel",
+            name: "Brontosaurus",
             price: 100,
             have: 0,
             onBuy: function(){
@@ -18,7 +18,7 @@ angular.module('app', [])
             }
         },
         ticket: {
-            name: "magic ticket",
+            name: "T-Rex",
             price: 10000,
             have: 0,
             onBuy: function(){

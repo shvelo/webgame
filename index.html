@@ -8,19 +8,19 @@
 <body ng-app="app" ng-controller="appCtrl" ng-cloak>
 
 <div class="panel" ng-show="debug">
-    <button ng-click="coins = coins+10000">+10000 coins</button>
+    <button ng-click="coins = coins+10000">+10000 raptors</button>
 </div>
 
 <div class="panel items">
-    You have <strong>{{coins}}</strong> coins 
+    You have <strong>{{coins}}</strong> raptors 
     <span ng-repeat="item in items" ng-show="item.have > 0">
-        , <strong>{{item.have}}</strong> {{item.name}}s
+        , <strong>{{item.have}}</strong> {{item.name}}
     </span>
-    <div>You get <strong>{{coinRate}}</strong> coins per second</div>
+    <div>You catch <strong>{{coinRate}}</strong> raptors per second</div>
 </div>
 
 <div class="panel">
-    <button ng-click="drop()">Drop them all</button>
+    <button ng-click="drop()">Release the raptors!</button>
     <button ng-repeat="(i, item) in items" ng-click="buy(i)" ng-show="item.available">
         buy a {{item.name}} [{{item.price}}]
     </button>
