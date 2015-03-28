@@ -5,8 +5,23 @@
     <title>Webgame</title>
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body>
-    
+<body ng-app="app" ng-controller="appCtrl">
+
+<div class="panel items">
+    You have <strong>{{coins}}</strong> coins 
+    <span ng-repeat="item in items" ng-show="item.have > 0">
+        and <strong>{{item.have}}</strong> {{item.name}}s
+    </span>
+</div>
+
+<div class="panel">
+    <button ng-click="drop()">Drop them all</button>
+    <button ng-repeat="(i, item) in items" ng-click="buy(i)" ng-show="item.available">
+        buy a {{item.name}} [{{item.price}}]
+    </button>
+</div>
+
+<script src="assets/lib/angular/angular.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
