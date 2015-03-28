@@ -16,6 +16,15 @@ angular.module('app', [])
             onBuy: function(){
                 $scope.coinRate += 10;
             }
+        },
+        ticket: {
+            name: "magic ticket",
+            price: 10000,
+            have: 0,
+            onBuy: function(){
+                $scope.stage = 1;
+                delete $scope.items.ticket;
+            }
         }
     };
     $scope.buy = function(item){
@@ -31,6 +40,9 @@ angular.module('app', [])
     }
     $scope.coins = 0;
     $scope.coinRate = 1;
+    $scope.stage = 0;
+
+    if(location.hash == "#debug") $scope.debug = true;
 
     var step = function(){
         $scope.coins += $scope.coinRate;

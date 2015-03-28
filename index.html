@@ -7,6 +7,10 @@
 </head>
 <body ng-app="app" ng-controller="appCtrl">
 
+<div class="panel" ng-show="debug">
+    <button ng-click="coins = coins+10000">+10000 coins</button>
+</div>
+
 <div class="panel items">
     You have <strong>{{coins}}</strong> coins 
     <span ng-repeat="item in items" ng-show="item.have > 0">
@@ -20,6 +24,10 @@
     <button ng-repeat="(i, item) in items" ng-click="buy(i)" ng-show="item.available">
         buy a {{item.name}} [{{item.price}}]
     </button>
+</div>
+
+<div class="panel" ng-show="stage >= 1">
+    <img src="http://i.imgur.com/fU2bm9c.gif" alt="">
 </div>
 
 <script src="assets/lib/angular/angular.js"></script>
