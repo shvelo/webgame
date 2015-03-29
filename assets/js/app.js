@@ -61,9 +61,26 @@ angular.module('app', [])
     $scope.drop = function(){
         $scope.coins = 0;
     }
-    $scope.coins = 0;
-    $scope.coinRate = 1;
-    $scope.stage = 0;
+
+    if(localStorage.coins) {
+        $scope.coins = localStorage.coins -0;
+        $scope.coinRate = localStorage.coinRate -0;
+        $scope.stage = localStorage.stage -0;
+        $scope.items = JSON.parse(localStorage.items);
+        $scope.specials = JSON.parse(localStorage.specials);
+    } else {
+        $scope.coins = 0;
+        $scope.coinRate = 1;
+        $scope.stage = 0;
+    }
+
+    window.onbeforeunload = function(){
+        localStorage.coins = $scope.coins;
+        localStorage.coinRate = $scope.coinRate;
+        localStorage.stage = $scope.stage;
+        localStorage.items = JSON.stringify($scope.items);
+        localStorage.specials = JSON.stringify($scope.specials);
+    };
 
     if(location.hash == "#debug") $scope.debug = true;
 
