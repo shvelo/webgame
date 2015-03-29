@@ -11,9 +11,14 @@
     <button ng-click="coins = coins+10000">+10000 raptors</button>
 </div>
 
+<div class="panel">
+    <a href="#" ng-click="screen = 'raptorium'">Raptorium</a>
+    <a href="#" ng-if="specials.exhibit.bought" ng-click="screen = 'exhibit'">Exhibit</a>
+</div>
+
 <div class="panel items">
     You have <strong>{{coins}}</strong> raptors 
-    <span ng-repeat="item in items" ng-show="item.have > 0">
+    <span ng-repeat="item in items | orderBy: price" ng-if="item.have > 0">
         , <strong>{{item.have}}</strong> {{item.name}}
     </span>
     <div>You catch <strong>{{coinRate}}</strong> raptors per second</div>
@@ -21,12 +26,19 @@
 
 <div class="panel">
     <button ng-click="drop()">Release the raptors!</button>
-    <button ng-repeat="(i, item) in items" ng-click="buy(i)" ng-show="item.available">
+    <button ng-repeat="(i, item) in items | orderBy: price" title="{{item.hint}}"
+        ng-click="buy(i)" ng-if="item.available">
         buy a {{item.name}} [{{item.price}}]
     </button>
 </div>
+<div class="panel">
+    <button ng-repeat="(i, item) in specials | orderBy: price" title="{{item.hint}}"
+        ng-click="buySpecial(i)" ng-if="!item.bought && item.available">
+        {{item.name}} [{{item.price}}]
+    </button>
+</div>
 
-<div class="panel" ng-show="stage >= 1">
+<div class="panel" ng-if="stage >= 1">
     <img src="http://i.imgur.com/fU2bm9c.gif" alt="">
 </div>
 

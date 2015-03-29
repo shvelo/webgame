@@ -1,32 +1,45 @@
 angular.module('app', [])
 .controller('appCtrl', function($scope, $interval){
     $scope.items = {
-        bagel: {
-            name: "lambeosaurus",
+        lambeosaurus: {
+            name: "Lambeosaurus",
             price: 10,
             have: 0,
+            hint: "+1 Raptors/s",
             onBuy: function(){
                 $scope.coinRate += 1;
             }
         },
-        superBagel: {
+        brontosaurus: {
             name: "Brontosaurus",
             price: 100,
             have: 0,
+            hint: "+10 Raptors/s",
             onBuy: function(){
                 $scope.coinRate += 10;
             }
-        },
-        ticket: {
-            name: "T-Rex",
-            price: 10000,
-            have: 0,
-            onBuy: function(){
-                $scope.stage = 1;
-                delete $scope.items.ticket;
-            }
         }
     };
+
+    $scope.specials = {
+        exhibit: {
+            name: "Exhibit",
+            price: 10000,
+            hint: "Exhibit the dinosaurs",
+            onBuy: function(){
+                $scope.stage = 1;
+            }
+        },
+        betterTools: {
+            name: "Better tools",
+            price: 1000,
+            hint: "Triple productivity",
+            onBuy: function(){
+                $scope.coinRate = $scope.coinRate * 3;
+            }
+        }
+    }
+
     $scope.buy = function(item){
         var i = $scope.items[item];
         if($scope.coins >= i.price) {
@@ -35,6 +48,16 @@ angular.module('app', [])
             if(i.onBuy) i.onBuy();
         }
     }
+
+    $scope.buySpecial = function(special){
+        var s = $scope.specials[special];
+        if($scope.coins >= s.price) {
+            $scope.coins -= s.price;
+            s.bought = true;
+            if(s.onBuy) s.onBuy();
+        }
+    }
+
     $scope.drop = function(){
         $scope.coins = 0;
     }
@@ -48,6 +71,11 @@ angular.module('app', [])
         $scope.coins += $scope.coinRate;
         for(item in $scope.items) {
             var i = $scope.items[item];
+            if($scope.coins >= i.price) i.available = true;
+        }
+
+        for(special in $scope.specials) {
+            var i = $scope.specials[special];
             if($scope.coins >= i.price) i.available = true;
         }
     }
